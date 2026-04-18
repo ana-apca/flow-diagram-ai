@@ -1,0 +1,581 @@
+{
+  "version": 1,
+  "meta": {
+    "id": "sistema-matrizes-console",
+    "name": "Architecture: Sistema Matrizes Console",
+    "description": "Arquitetura completa da aplicação console .NET do Sistema de Matrizes Matemáticas com CQRS, Domain Services e Clean Architecture.",
+    "systemSlug": "sistema-matrizes-console",
+    "status": "analyzed",
+    "createdAt": "2026-04-17T19:00:00.000Z",
+    "updatedAt": "2026-04-17T19:00:00.000Z"
+  },
+  "diagrams": [
+    {
+      "id": "sistema-matrizes-console",
+      "name": "Architecture: Sistema Matrizes Console",
+      "desc": "Primary architecture snapshot",
+      "dot": true
+    }
+  ],
+  "layout": {
+    "nodes": [
+      {
+        "id": "console-app",
+        "label": "Console App",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": ".NET 8",
+        "x": 40,
+        "y": 80,
+        "w": 168,
+        "h": 92,
+        "ops": ["START", "DI"]
+      },
+      {
+        "id": "main-menu",
+        "label": "MainMenu",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Console UI",
+        "x": 40,
+        "y": 210,
+        "w": 168,
+        "h": 92,
+        "ops": ["DISPATCH"]
+      },
+      {
+        "id": "sub-menus",
+        "label": "SubMenus (13+)",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Console UI",
+        "x": 280,
+        "y": 80,
+        "w": 168,
+        "h": 92,
+        "ops": ["INPUT", "DISPLAY"]
+      },
+      {
+        "id": "output-writers",
+        "label": "Output Writers",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "JSON/CSV",
+        "x": 280,
+        "y": 210,
+        "w": 168,
+        "h": 92,
+        "ops": ["EXPORT"]
+      },
+      {
+        "id": "mediator",
+        "label": "MediatR",
+        "sublabel": "GATEWAY",
+        "type": "GATEWAY",
+        "tech": "MediatR",
+        "x": 520,
+        "y": 80,
+        "w": 168,
+        "h": 92,
+        "ops": ["ROUTE"]
+      },
+      {
+        "id": "fluent-validation",
+        "label": "FluentValidation",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Pipeline",
+        "x": 520,
+        "y": 210,
+        "w": 168,
+        "h": 92,
+        "ops": ["VALIDATE"]
+      },
+      {
+        "id": "cmd-handlers",
+        "label": "Command Handlers",
+        "sublabel": "WORKER",
+        "type": "WORKER",
+        "tech": "CQRS",
+        "x": 760,
+        "y": 80,
+        "w": 168,
+        "h": 92,
+        "ops": ["GENERATE", "CREATE"]
+      },
+      {
+        "id": "qry-handlers",
+        "label": "Query Handlers",
+        "sublabel": "WORKER",
+        "type": "WORKER",
+        "tech": "CQRS",
+        "x": 760,
+        "y": 210,
+        "w": 168,
+        "h": 92,
+        "ops": ["ANALYZE", "READ"]
+      },
+      {
+        "id": "motor-g24",
+        "label": "MotorG24",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Domain",
+        "x": 1000,
+        "y": 80,
+        "w": 168,
+        "h": 92,
+        "ops": ["GENERATE", "VALIDATE"]
+      },
+      {
+        "id": "orquestrador",
+        "label": "Orquestrador",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Domain",
+        "x": 1000,
+        "y": 210,
+        "w": 168,
+        "h": 92,
+        "ops": ["ORCHESTRATE"]
+      },
+      {
+        "id": "analisador-freq",
+        "label": "Analisador Freq.",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Domain",
+        "x": 1000,
+        "y": 340,
+        "w": 168,
+        "h": 92,
+        "ops": ["ANALYZE"]
+      },
+      {
+        "id": "analisador-padroes",
+        "label": "Analisador Padrões",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Domain",
+        "x": 1000,
+        "y": 470,
+        "w": 168,
+        "h": 92,
+        "ops": ["PATTERN"]
+      },
+      {
+        "id": "estrategias",
+        "label": "Estratégias G18-G25",
+        "sublabel": "WORKER",
+        "type": "WORKER",
+        "tech": "Domain",
+        "x": 1240,
+        "y": 80,
+        "w": 168,
+        "h": 92,
+        "ops": ["COMPUTE"]
+      },
+      {
+        "id": "algoritmo-genetico",
+        "label": "Algoritmo Genético",
+        "sublabel": "WORKER",
+        "type": "WORKER",
+        "tech": "IA Evolutiva",
+        "x": 1240,
+        "y": 210,
+        "w": 168,
+        "h": 92,
+        "ops": ["EVOLVE"]
+      },
+      {
+        "id": "fechamento-hibrido",
+        "label": "Fechamento Híbrido",
+        "sublabel": "WORKER",
+        "type": "WORKER",
+        "tech": "Domain",
+        "x": 1240,
+        "y": 340,
+        "w": 168,
+        "h": 92,
+        "ops": ["COMBINE"]
+      },
+      {
+        "id": "previsao-ml",
+        "label": "Previsão ML",
+        "sublabel": "EXTERNAL",
+        "type": "EXTERNAL",
+        "tech": "ML.NET",
+        "x": 1240,
+        "y": 470,
+        "w": 168,
+        "h": 92,
+        "ops": ["PREDICT"]
+      },
+      {
+        "id": "validadores",
+        "label": "Validadores",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Domain",
+        "x": 1480,
+        "y": 80,
+        "w": 168,
+        "h": 92,
+        "ops": ["CHECK"]
+      },
+      {
+        "id": "random-gen",
+        "label": "Random Generator",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Crypto",
+        "x": 1480,
+        "y": 210,
+        "w": 168,
+        "h": 92,
+        "ops": ["RAND"]
+      },
+      {
+        "id": "lotofacil-svc",
+        "label": "LotofacilService",
+        "sublabel": "SERVICE",
+        "type": "SERVICE",
+        "tech": "Infra",
+        "x": 1480,
+        "y": 340,
+        "w": 168,
+        "h": 92,
+        "ops": ["LOAD"]
+      },
+      {
+        "id": "cache-svc",
+        "label": "CacheService",
+        "sublabel": "CACHE",
+        "type": "CACHE",
+        "tech": "Redis",
+        "x": 1720,
+        "y": 80,
+        "w": 185,
+        "h": 92,
+        "ops": ["GET", "SET"]
+      },
+      {
+        "id": "csv-data",
+        "label": "CSV Data Store",
+        "sublabel": "DATABASE",
+        "type": "DATABASE",
+        "tech": "CSV Files",
+        "x": 1720,
+        "y": 210,
+        "w": 185,
+        "h": 92,
+        "ops": ["READ"]
+      },
+      {
+        "id": "file-output",
+        "label": "File Output",
+        "sublabel": "OBJECT_STORAGE",
+        "type": "OBJECT_STORAGE",
+        "tech": "JSON/CSV",
+        "x": 1720,
+        "y": 340,
+        "w": 185,
+        "h": 92,
+        "ops": ["WRITE"]
+      },
+      {
+        "id": "exception-handling",
+        "label": "Exception Handling",
+        "sublabel": "OBSERVABILITY",
+        "type": "OBSERVABILITY",
+        "tech": "Serilog",
+        "x": 520,
+        "y": 470,
+        "w": 168,
+        "h": 92,
+        "ops": ["LOG"]
+      }
+    ],
+    "connections": [
+      {
+        "id": "c-console-menu",
+        "from": "console-app",
+        "to": "main-menu",
+        "label": "starts",
+        "dashed": false
+      },
+      {
+        "id": "c-menu-submenus",
+        "from": "main-menu",
+        "to": "sub-menus",
+        "label": "dispatch",
+        "dashed": false
+      },
+      {
+        "id": "c-submenus-writers",
+        "from": "sub-menus",
+        "to": "output-writers",
+        "label": "export",
+        "dashed": false
+      },
+      {
+        "id": "c-submenus-mediator",
+        "from": "sub-menus",
+        "to": "mediator",
+        "label": "send",
+        "dashed": false
+      },
+      {
+        "id": "c-mediator-validation",
+        "from": "mediator",
+        "to": "fluent-validation",
+        "label": "pipeline",
+        "dashed": false
+      },
+      {
+        "id": "c-mediator-cmd",
+        "from": "mediator",
+        "to": "cmd-handlers",
+        "label": "route cmd",
+        "dashed": false
+      },
+      {
+        "id": "c-mediator-qry",
+        "from": "mediator",
+        "to": "qry-handlers",
+        "label": "route qry",
+        "dashed": false
+      },
+      {
+        "id": "c-cmd-motor",
+        "from": "cmd-handlers",
+        "to": "motor-g24",
+        "label": "generate",
+        "dashed": false
+      },
+      {
+        "id": "c-cmd-orq",
+        "from": "cmd-handlers",
+        "to": "orquestrador",
+        "label": "orchestrate",
+        "dashed": false
+      },
+      {
+        "id": "c-qry-freq",
+        "from": "qry-handlers",
+        "to": "analisador-freq",
+        "label": "analyze",
+        "dashed": false
+      },
+      {
+        "id": "c-qry-padroes",
+        "from": "qry-handlers",
+        "to": "analisador-padroes",
+        "label": "patterns",
+        "dashed": false
+      },
+      {
+        "id": "c-motor-estrategias",
+        "from": "motor-g24",
+        "to": "estrategias",
+        "label": "uses",
+        "dashed": false
+      },
+      {
+        "id": "c-motor-genetico",
+        "from": "motor-g24",
+        "to": "algoritmo-genetico",
+        "label": "evolve",
+        "dashed": false
+      },
+      {
+        "id": "c-motor-hibrido",
+        "from": "motor-g24",
+        "to": "fechamento-hibrido",
+        "label": "combine",
+        "dashed": false
+      },
+      {
+        "id": "c-orq-motor",
+        "from": "orquestrador",
+        "to": "motor-g24",
+        "label": "coordinate",
+        "dashed": false
+      },
+      {
+        "id": "c-orq-estrategias",
+        "from": "orquestrador",
+        "to": "estrategias",
+        "label": "parallel",
+        "dashed": true
+      },
+      {
+        "id": "c-qry-ml",
+        "from": "qry-handlers",
+        "to": "previsao-ml",
+        "label": "predict",
+        "dashed": false
+      },
+      {
+        "id": "c-motor-validadores",
+        "from": "motor-g24",
+        "to": "validadores",
+        "label": "validate",
+        "dashed": false
+      },
+      {
+        "id": "c-motor-random",
+        "from": "motor-g24",
+        "to": "random-gen",
+        "label": "rand",
+        "dashed": false
+      },
+      {
+        "id": "c-genetico-random",
+        "from": "algoritmo-genetico",
+        "to": "random-gen",
+        "label": "rand",
+        "dashed": false
+      },
+      {
+        "id": "c-padroes-lotofacil",
+        "from": "analisador-padroes",
+        "to": "lotofacil-svc",
+        "label": "load data",
+        "dashed": true
+      },
+      {
+        "id": "c-freq-cache",
+        "from": "analisador-freq",
+        "to": "cache-svc",
+        "label": "cache",
+        "dashed": false
+      },
+      {
+        "id": "c-lotofacil-csv",
+        "from": "lotofacil-svc",
+        "to": "csv-data",
+        "label": "read",
+        "dashed": false
+      },
+      {
+        "id": "c-lotofacil-cache",
+        "from": "lotofacil-svc",
+        "to": "cache-svc",
+        "label": "cache",
+        "dashed": false
+      },
+      {
+        "id": "c-writers-file",
+        "from": "output-writers",
+        "to": "file-output",
+        "label": "write",
+        "dashed": false
+      },
+      {
+        "id": "c-cmd-exceptions",
+        "from": "cmd-handlers",
+        "to": "exception-handling",
+        "label": "throws",
+        "dashed": true
+      },
+      {
+        "id": "c-qry-exceptions",
+        "from": "qry-handlers",
+        "to": "exception-handling",
+        "label": "throws",
+        "dashed": true
+      }
+    ]
+  },
+  "endpointsByNode": {
+    "console-app": [
+      { "method": "POST", "path": "/start" }
+    ],
+    "main-menu": [
+      { "method": "GET", "path": "/menu/options" }
+    ],
+    "sub-menus": [
+      { "method": "GET", "path": "/menu/pattern" },
+      { "method": "GET", "path": "/menu/combination" },
+      { "method": "GET", "path": "/menu/history" },
+      { "method": "GET", "path": "/menu/prize" },
+      { "method": "GET", "path": "/menu/filters" },
+      { "method": "GET", "path": "/menu/bolao" },
+      { "method": "GET", "path": "/menu/statistics" },
+      { "method": "GET", "path": "/menu/estrategias" },
+      { "method": "GET", "path": "/menu/ml" }
+    ],
+    "output-writers": [
+      { "method": "POST", "path": "/export/json" },
+      { "method": "POST", "path": "/export/csv" }
+    ],
+    "mediator": [
+      { "method": "POST", "path": "/send/command" },
+      { "method": "POST", "path": "/send/query" }
+    ],
+    "fluent-validation": [],
+    "cmd-handlers": [
+      { "method": "POST", "path": "/handle/generate-combinations" },
+      { "method": "POST", "path": "/handle/create-bolao" },
+      { "method": "POST", "path": "/handle/import-results" },
+      { "method": "POST", "path": "/handle/gerar-matriz-g24" }
+    ],
+    "qry-handlers": [
+      { "method": "GET", "path": "/handle/analyze-frequency" },
+      { "method": "GET", "path": "/handle/apply-filters" },
+      { "method": "GET", "path": "/handle/calculate-prizes" },
+      { "method": "GET", "path": "/handle/compare-history" }
+    ],
+    "motor-g24": [
+      { "method": "POST", "path": "/generate" },
+      { "method": "POST", "path": "/validate-24-rules" }
+    ],
+    "orquestrador": [
+      { "method": "POST", "path": "/orchestrate/parallel" }
+    ],
+    "analisador-freq": [
+      { "method": "GET", "path": "/frequency/analyze" }
+    ],
+    "analisador-padroes": [
+      { "method": "GET", "path": "/patterns/historical" }
+    ],
+    "estrategias": [
+      { "method": "POST", "path": "/strategy/g18" },
+      { "method": "POST", "path": "/strategy/g25" }
+    ],
+    "algoritmo-genetico": [
+      { "method": "POST", "path": "/evolve" }
+    ],
+    "fechamento-hibrido": [
+      { "method": "POST", "path": "/hybrid/combine" }
+    ],
+    "previsao-ml": [
+      { "method": "GET", "path": "/predict" }
+    ],
+    "validadores": [
+      { "method": "POST", "path": "/validate/professional" },
+      { "method": "POST", "path": "/validate/garantia-minima" }
+    ],
+    "random-gen": [],
+    "lotofacil-svc": [
+      { "method": "GET", "path": "/data/load-historical" }
+    ],
+    "cache-svc": [
+      { "method": "GET", "path": "/cache/get" },
+      { "method": "POST", "path": "/cache/set" }
+    ],
+    "csv-data": [],
+    "file-output": [],
+    "exception-handling": []
+  },
+  "analysis": {
+    "source": "ai",
+    "lastAnalyzedAt": "2026-04-17T19:00:00.000Z",
+    "stats": {
+      "services": 23,
+      "endpoints": 30,
+      "flows": 27
+    }
+  }
+}
